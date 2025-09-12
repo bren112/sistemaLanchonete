@@ -1,9 +1,10 @@
 #include <iostream>
 using namespace std;
+#include <string>
 
 int main() {
     double totalPedido; 
-    int comeco, escolhaCateg, escolhaProd;
+    int comeco, escolhaCateg, escolhaProd, qntd;
     string nome, descPedido;
 
 
@@ -22,7 +23,7 @@ int main() {
             cout << "\n{=================== MENU ===================}" << endl;
             cout << "\nPara sair Digite: 0" << endl;
             cout << "O que voce deseja pedir? " << endl;
-            cout << "\nDigite qual categoria voce deseja: \n1) Lanches \n2) Bebidas\n\n" << endl;
+            cout << "\nDigite qual categoria voce deseja: \n1) Lanches \n2) Bebidas\n3) Doces\n \n" << endl;
             cout << "Sua escolha: ";
             cin >> escolhaCateg;
             cout << "\n"; 
@@ -39,19 +40,21 @@ int main() {
                             case 0 :
                                     cout << "Voltando... \n"; 
                                     break;
+
                             case 1 :
-                                    cout << "\nHamburguer adicionado ao pedido com sucesso!" << endl;
-                                    totalPedido += 10;
+                                    cout << "\nQuantos hamburguers? ";
+                                    cin >> qntd;
+                                    totalPedido += (10 * qntd);
                                     cout << "\n";
                                     
                                     cout << "=====================================================" << endl;
                                     cout << "Valor total do Pedido: ";
                                     cout << "R$" << totalPedido << endl;
-                                    
-
                                     cout << "=====================================================" << endl;
+
+
                                     cout << "\nSeu pedido: " << endl;
-                                    descPedido += "-Hamburguer -R$10,00; \n";
+                                    descPedido += to_string(qntd)+"x" + " -Hamburguer R$" + to_string(10 * qntd) + "\n";
                                     cout << "\n"; 
                                     cin.ignore(); 
                                     cout << descPedido;
@@ -60,8 +63,9 @@ int main() {
                             break;
                             
                             case 2 : 
-                                    cout << "\nCheeseburguer adicionado ao pedido com sucesso!" << endl;
-                                    totalPedido += 12;
+                                    cout << "\nQuantos Cheeseburguers? ";
+                                    cin >> qntd;
+                                    totalPedido  += (qntd * 12);
                                     cout << "\n";
                                     
                                     cout << "=====================================================" << endl;
@@ -70,7 +74,7 @@ int main() {
                         
                                     cout << "=====================================================" << endl;
                                     cout << "\nSeu pedido: " << endl;
-                                    descPedido += "-Cheeseburguer -R$12,00; \n";
+                                    descPedido += to_string(qntd)+"x" + " -Cheeseburguer R$" + to_string(12 * qntd) + "\n";
                                     cout << "\n";
                                     cin.ignore(); 
                                     cout << descPedido;
@@ -80,7 +84,7 @@ int main() {
 
                             case 3 :
                                  
-                                  cout << "\nX-Bacon adicionado ao carrinho com sucesso!" << endl;
+                                  cout << "\nQuantos X-Bacons?" << endl;
                                   totalPedido += 15;
                                   cout << "\n";
                                   cout << "=====================================================" << endl;
@@ -103,7 +107,8 @@ int main() {
                                   break;
 
                         }                            
-                break;           
+                break;  
+                         
                           
                 case 2:
                     cout << "\n" << nome <<  " Qual Bebida voce quer? \n \n1)Refrigerante - R$5,00 \n2)Suco - R$7,00 \n3)Agua - R$3,00" <<endl;
@@ -128,6 +133,8 @@ int main() {
                                 cin.ignore();
                                 cout << descPedido;
                                 cout << "\n=====================================================" << endl;
+
+                                break;
                             }
                             case 2:{
                                 cout << "\nSuco adicionado ao carrinho com sucesso!" << endl;
@@ -147,6 +154,8 @@ int main() {
                                 cin.ignore();
                                 cout << descPedido;
                                 cout << "\n=====================================================" << endl;
+
+                                break;
                             }
                             case 3:{
                                 cout << "\nAgua adicionada ao carrinho com sucesso!" << endl;
@@ -164,6 +173,8 @@ int main() {
                                 cin.ignore();
                                 cout << descPedido;
                                 cout << "\n=====================================================" << endl;
+
+                                break;
                             }
                             default: 
                             cout << "\nEscolha uma opcao valida!." << endl;
@@ -173,6 +184,28 @@ int main() {
 
                     break;
 
+                case 3: {
+                    cout << "\n" << nome <<  " Qual opce voce quer? \n \n1)Sorvete - R$8,00 \n2)Bolo - R$6,00 \n3)Pudim - R$5,00" <<endl;
+                    cout << "Escolha pelo numero do da Bebida: " ;
+                    cin >> escolhaProd;
+
+                    switch(escolhaProd){
+                        case 1:
+                            cout << "sorvete";
+                            break;
+
+                        case 2:
+                            cout << "bolo";
+                            break;
+                        
+                        case 3:
+                            cout << "pudim";
+                            break;
+                            
+                        
+                    }
+
+                }
 
                 case 0:
                     cout << "Finalizando pedido...\n";
