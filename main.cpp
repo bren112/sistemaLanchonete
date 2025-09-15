@@ -1,19 +1,19 @@
 #include <iostream>
-using namespace std;
 #include <string>
+#include <iomanip>
+using namespace std;
 
 int main() {
-    double totalPedido; 
+    double totalCompra = 0, valorItem; 
     int comeco, escolhaCateg, escolhaProd, qntd;
     string nome, descPedido;
 
-
-    cout << "\n{=======Bem Vindo ao Cardapio, deseja fazer o pedido?=======}" << endl;
+    cout << "\n{======= Bem Vindo ao Cardapio, deseja fazer o pedido? =======}" << endl;
     cout << "\nDigite '1' para Confirmar\nQualquer outro numero para Sair: ";
     cin >> comeco;
 
     if (comeco == 1) {
-        cout << "\n{======Voce entrou no cardapio!======}" << endl;
+        cout << "\n{====== Voce entrou no cardapio! ======}" << endl;
         cin.ignore(); 
         cout << "Digite seu nome: ";
         getline(cin, nome);
@@ -23,202 +23,186 @@ int main() {
             cout << "\n{=================== MENU ===================}" << endl;
             cout << "\nPara sair Digite: 0" << endl;
             cout << "O que voce deseja pedir? " << endl;
-            cout << "\nDigite qual categoria voce deseja: \n1) Lanches \n2) Bebidas\n3) Doces\n \n" << endl;
+            cout << "\nDigite qual categoria voce deseja: \n1) Lanches \n2) Bebidas\n3) Doces \n4) Finalizar " << endl;
             cout << "Sua escolha: ";
             cin >> escolhaCateg;
             cout << "\n"; 
 
-
             switch (escolhaCateg) {
+                // ================= Lanches =================
                 case 1:
                     cout << "Digite 0 para voltar para o Menu\n";
-                    cout << "\n" << nome <<  " Qual lanche voce quer? \n  \n1)Hamburguer - R$10,00 \n2)Cheeseburguer - R$12,00 \n3)X-Bacon - R$15,00" <<endl;
-                    cout << "Escolha pelo numero do lanche: " ;
+                    cout << "\n" << nome << " Qual lanche voce quer? \n\n1) Hamburguer - R$10,00 \n2) Cheeseburguer - R$12,00 \n3) X-Bacon - R$15,00" << endl;
+                    cout << "Escolha pelo numero do lanche: ";
                     cin >> escolhaProd;
 
-                        switch (escolhaProd){
-                            case 0 :
-                                    cout << "Voltando... \n"; 
-                                    break;
+                    switch (escolhaProd) {
+                        case 0:
+                            cout << "Voltando... \n"; 
+                            break;
 
-                            case 1 :
-                                    cout << "\nQuantos hamburguers? ";
-                                    cin >> qntd;
-                                    totalPedido += (10 * qntd);
-                                    cout << "\n";
-                                    
-                                    cout << "=====================================================" << endl;
-                                    cout << "Valor total do Pedido: ";
-                                    cout << "R$" << totalPedido << endl;
-                                    cout << "=====================================================" << endl;
+                        case 1:
+                            cout << "\nQuantos Hamburgueres? ";
+                            cin >> qntd;
+                            valorItem = 10 * qntd;  
+                            totalCompra += valorItem;
+                            cout << "\n" << qntd << "x Hamburguer(s) adicionado(s)!" << endl;
+                            descPedido += to_string(qntd) + "x -Hamburguer \n";
 
 
-                                    cout << "\nSeu pedido: " << endl;
-                                    descPedido += to_string(qntd)+"x" + " -Hamburguer R$" + to_string(10 * qntd) + "\n";
-                                    cout << "\n"; 
-                                    cin.ignore(); 
-                                    cout << descPedido;
-                                    cout << "\n=====================================================" << endl;
+                            cout << "=====================================================" << endl;
+                            cout << "Valor total do Pedido: R$" << fixed << setprecision(2) << totalCompra << endl;
+                            cout << "=====================================================" << endl;
 
                             break;
                             
-                            case 2 : 
-                                    cout << "\nQuantos Cheeseburguers? ";
-                                    cin >> qntd;
-                                    totalPedido  += (qntd * 12);
-                                    cout << "\n";
-                                    
-                                    cout << "=====================================================" << endl;
-                                    cout << "Valor total do Pedido: ";
-                                    cout << "R$" << totalPedido << endl;
-                        
-                                    cout << "=====================================================" << endl;
-                                    cout << "\nSeu pedido: " << endl;
-                                    descPedido += to_string(qntd)+"x" + " -Cheeseburguer R$" + to_string(12 * qntd) + "\n";
-                                    cout << "\n";
-                                    cin.ignore(); 
-                                    cout << descPedido;
-                                    cout << "\n=====================================================" << endl;
+                        case 2:
+                            cout << "\nQuantos Cheeseburguer? ";
+                            cin >> qntd;
+                            valorItem = 12 * qntd;  
+                            totalCompra += valorItem;
+                            cout << "\n" << qntd << "x Cheeseburguer(es) adicionado(s)!" << endl;
+                            descPedido += to_string(qntd) + "x -Cheeseburguer \n";
+
+
+                            cout << "=====================================================" << endl;
+                            cout << "Valor total do Pedido: R$" << fixed << setprecision(2) << totalCompra << endl;
+                            cout << "=====================================================" << endl;
 
                             break;
 
-                            case 3 :
-                                 
-                                  cout << "\nQuantos X-Bacons?" << endl;
-                                  totalPedido += 15;
-                                  cout << "\n";
-                                  cout << "=====================================================" << endl;
+                        case 3:
+                            cout << "\nQuantos X-Bacon? ";
+                            cin >> qntd;
+                            valorItem = 15 * qntd;  
+                            totalCompra += valorItem;
+                            cout << "\n" << qntd << "x X-Bacon adicionado(s)!" << endl;
+                            descPedido += to_string(qntd) + "x -Xbacon \n";
 
-                                  cout << "=====================================================" << endl;
-                                  cout << "Valor total do Pedido: ";
-                                  cout << "R$" << totalPedido << endl;
-                                  
+                            cout << "=====================================================" << endl;
+                            cout << "Valor total adicionado ao pedido: R$" << fixed << setprecision(2) << totalCompra << endl;
+                            cout << "=====================================================" << endl;
 
-                                  cout << "=====================================================" << endl;
-                                  cout << "\nSeu pedido: " << endl;
-                                  descPedido += "-X-Bacon -R$15,00 \n";
-                                  cout << "\n";
-                                  cin.ignore();
-                                  cout << descPedido;
-                                  cout << "\n=====================================================" << endl;
+                            break;
 
-                                  default: 
-                                  cout << "\nEscolha uma opcao valida!." << endl;
-                                  break;
-
-                        }                            
-                break;  
-                         
-                          
-                case 2:
-                    cout << "\n" << nome <<  " Qual Bebida voce quer? \n \n1)Refrigerante - R$5,00 \n2)Suco - R$7,00 \n3)Agua - R$3,00" <<endl;
-                    cout << "Escolha pelo numero do da Bebida: " ;
-                    cin >> escolhaProd;
-                
-                        switch(escolhaProd){
-                            case 1:{
-                                cout << "\nRefrigerante adicionado ao carrinho com sucesso!" << endl;
-                                totalPedido += 5;
-                                cout << "\n";
-
-                                cout << "=====================================================" << endl;
-                                cout << "Valor total do Pedido: ";
-                                cout << "R$" << totalPedido << endl;
-                                
-                                
-                                cout << "=====================================================" << endl;
-                                cout << "\nSeu pedido: " << endl;
-                                descPedido += "-Refrigerante -R$5,00 \n";
-                                cout << "\n";
-                                cin.ignore();
-                                cout << descPedido;
-                                cout << "\n=====================================================" << endl;
-
-                                break;
-                            }
-                            case 2:{
-                                cout << "\nSuco adicionado ao carrinho com sucesso!" << endl;
-                                totalPedido += 7;
-                                cout << "\n";
-                                
-                                cout << "=====================================================" << endl;
-                                cout << "Valor total do Pedido: ";
-                                cout << "R$" << totalPedido << endl;
-                              
-                                
-
-                                cout << "=====================================================" << endl;
-                                cout << "\nSeu pedido: " << endl;
-                                descPedido += "-Suco -R$7,00 \n";
-                                cout << "\n";
-                                cin.ignore();
-                                cout << descPedido;
-                                cout << "\n=====================================================" << endl;
-
-                                break;
-                            }
-                            case 3:{
-                                cout << "\nAgua adicionada ao carrinho com sucesso!" << endl;
-                                totalPedido += 3;
-                                cout << "\n";
-
-                                cout << "=====================================================" << endl;
-                                cout << "Valor Total do Pedido: ";
-                                cout << "R$" << totalPedido << endl;
-
-                                cout << "=====================================================" << endl;
-                                cout << "\nSeu pedido: " << endl;
-                                cout << "\n";
-                                descPedido += "-Agua -R$3,00\n";
-                                cin.ignore();
-                                cout << descPedido;
-                                cout << "\n=====================================================" << endl;
-
-                                break;
-                            }
-                            default: 
+                        default:
                             cout << "\nEscolha uma opcao valida!." << endl;
                             break;
+                    }
+                    break;  
 
-                        }
-
-                    break;
-
-                case 3: {
-                    cout << "\n" << nome <<  " Qual opce voce quer? \n \n1)Sorvete - R$8,00 \n2)Bolo - R$6,00 \n3)Pudim - R$5,00" <<endl;
-                    cout << "Escolha pelo numero do da Bebida: " ;
+                // ================= Bebidas =================
+                case 2:
+                    cout << "Digite 0 para voltar para o Menu\n";
+                    cout << "\n" << nome << " Qual bebida voce quer? \n\n1) Refrigerante - R$5,00 \n2) Suco - R$7,00 \n3) Agua - R$3,00" << endl;
+                    cout << "Escolha pelo numero da bebida: ";
                     cin >> escolhaProd;
 
-                    switch(escolhaProd){
+                    switch (escolhaProd) {
+                        case 0:
+                            cout << "Voltando... \n"; 
+                            break;
+
                         case 1:
-                            cout << "sorvete";
+                            cout << "Quantos Refrigerantes? ";
+                            cin >> qntd;
+                            valorItem = 5 * qntd;  
+                            totalCompra += valorItem;
+                            cout << "\n" << qntd << "x Refrigerante(s) adicionado(s)!" << endl;
+                            descPedido += to_string(qntd) + "x -Refrigerante \n";
+
+
+                            cout << "=====================================================" << endl;
+                            cout << "Valor total adicionado ao pedido: R$" << fixed << setprecision(2) << totalCompra << endl;
+                            cout << "=====================================================" << endl;
                             break;
 
                         case 2:
-                            cout << "bolo";
+                            cout << "Quantos Sucos? ";
+                            cin >> qntd;
+                            valorItem = 7 * qntd;  
+                            totalCompra += valorItem;
+                            cout << "\n" << qntd << "x Suco(s) adicionado(s)!" << endl;
+                            descPedido += to_string(qntd) + "x -Suco \n";
+
+
+                            cout << "=====================================================" << endl;
+                            cout << "Valor total adicionado ao pedido: R$" << fixed << setprecision(2) << totalCompra << endl;
+                            cout << "=====================================================" << endl;
+                            break;
+
+                        case 3:
+                            cout << "Quantas Aguas? ";
+                            cin >> qntd;
+                            valorItem = 3 * qntd;  
+                            totalCompra +=  valorItem;
+                            cout << "\n" << qntd << "x Agua(s) adicionada(s)!" << endl;
+                            descPedido += to_string(qntd) + "x -Agua \n";
+
+
+                            cout << "=====================================================" << endl;
+                            cout << "Valor total adicionado ao pedido: R$"   << fixed << setprecision(2)<< totalCompra << endl;
+                            cout << "=====================================================" << endl;
+                            break;
+
+                        default:
+                            cout << "\nEscolha uma opcao valida!." << endl;
+                            break;
+                    }
+                    break;
+
+                // ================= Doces =================
+                case 3:
+                    cout << "Digite 0 para voltar para o Menu\n";
+                    cout << "\n" << nome << " Qual sobremesa voce quer? \n\n1) Sorvete - R$8,00 \n2) Bolo - R$6,00 \n3) Pudim - R$5,00" << endl;
+                    cout << "Escolha pelo numero da sobremesa: ";
+                    cin >> escolhaProd;
+
+                    switch (escolhaProd) {
+                        case 1:
+                            cout << "sorvete" << endl;
+                            break;
+
+                        case 2:
+                            cout << "bolo" << endl;
                             break;
                         
                         case 3:
-                            cout << "pudim";
+                            cout << "pudim" << endl;
                             break;
-                            
                         
-                    }
+                        case 0:
+                            cout << "Voltando... \n";
+                            break;
 
-                }
+                        default:
+                            cout << "Escolha uma opcao valida!\n";
+                            break;
+                    }
+                    break;
+
+                // ================= Finalizar =================
+                case 4:
+                    cout << "{=================PEDIDO FINALIZADO!=================}" << endl;
+                    cout << "\n";
+                    cout << "O valor total e de R$ " << fixed << setprecision(2) << totalCompra << endl;
+                    cout << "\nResumo do pedido:\n" << descPedido << endl;
+                    cout << "{====================================================}" << endl;
+
+                    break;
 
                 case 0:
                     cout << "Finalizando pedido...\n";
                     break;
 
                 default:
-                    cout << "opcao invalida! Tente novamente.\n";
+                    cout << "Opcao invalida! Tente novamente.\n";
             }
 
-        } while (escolhaCateg != 4);
+        } while (escolhaCateg != 4 && escolhaCateg != 0);
 
     } else {
-        cout << "vc escolheu n fazer o pedido\n";
+        cout << "Voce escolheu nao fazer o pedido\n";
     }
 
     return 0;
