@@ -194,7 +194,12 @@ int main() {
                     cout << "Digite 0 para voltar para o Menu\n";
                     cout << "\n" << nome << " Qual sobremesa voce quer? \n\n1) Sorvete - R$8,00 \n2) Bolo - R$6,00 \n3) Pudim - R$5,00" << endl;
                     cout << "Escolha pelo numero da sobremesa: ";
-                    cin >> escolhaProd;
+                    while (!(cin >> escolhaProd)){
+                        cout << "Entrada invalida! Digite apenas numeros: ";
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
+                  
 
                     switch (escolhaProd) {
                         case 1:
